@@ -2,14 +2,66 @@ body{
     width: 100%;
     background:linear-gradient(#615dad,#ffc8da);
     background-repeat: no-repeat;
+    height: 800px;
+}
+.container{
+    margin: 0 auto;
+    margin-top: 80px;
+    text-align: center;
+    width: 30%;
+    border-radius:5px;
 }
 
+.text{
+    background-color:#283e50;
+    margin: 0 auto;
+    color: #fff;
+    width: 80%;
+}
+p {
+    margin:10px;
+    padding-bottom: 20px;
+    font-size:18px;
+}
 h1{
     margin: 0 auto;
     text-align: center;
+    font-family: "Lobster";
+    padding-top:20px;
+    font-size:40px;
+    font-weight: 100;
 }
 
 img{
     margin: 0 auto;
     display: block;
+    width: 80%;
+    border-radius: 8px 8px 0 0;
+    
+}
+
+button{
+    width: 100%;
+    color: #fff;
+    border: none;
+    height:50px;
+    font-size:17px;
+}
+
+.rules{
+    background-color:#1fcca4;
+    border-bottom:1px solid #283e50;
+}
+
+.rules:hover {
+    background-color: #1cbb96;
+}
+
+.start_game{
+    background-color: #0197f6;
+    border-top:1px solid #283e50;
+}
+
+.start_game:hover{
+    background-color:#0090e9;
 }
