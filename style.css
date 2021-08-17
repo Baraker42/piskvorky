@@ -46,13 +46,18 @@ button{
     width: 100%;
     color: #fff;
     border: none;
-    height:5vw;
+    height:6.5vw;
     font-size:2vw;
+}
+
+hr{
+    border-top: 0.0001em solid #283e50;
+    margin: 0 auto;
+    border-bottom: none;
 }
 
 .rules{
     background-color:#1fcca4;
-
 }
 
 .rules:hover {
@@ -60,8 +65,8 @@ button{
 }
 
 .start_game{
+    position: relative;
     background-color: #0197f6;
-    border-top:0.001em solid #283e50;
 }
 
 .start_game:hover{
