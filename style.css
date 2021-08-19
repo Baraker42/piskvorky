@@ -11,7 +11,7 @@ body{
     margin: 0 auto;
     margin-top: 80px;
     text-align: center;
-    width: 50%;
+    width: 40%;
 }
 
 .text{
@@ -28,9 +28,9 @@ body{
     p {
       font-size: 15px;
     }
-    button {
+    a {
         font-size: 15px;
-        height:4vw;
+        height:3vw;
       }
   }
 
@@ -41,9 +41,9 @@ body{
     p {
       font-size:11px;
     }
-    button {
+    a {
         font-size:11px;
-        height:6vw;
+        height:5vw;
       }
   }
 
@@ -53,6 +53,7 @@ p {
     margin:0.7vw 2vw 0.7vw 2vw;
     padding-bottom: 0.8vw;
     font-family: sans-serif;
+
 }
 
 h1{
@@ -74,21 +75,17 @@ img{
 .buttons{
     display: flex;
     flex-direction: column;
+    font-family: sans-serif;
 }
 
-button{
-    width: 100%;
-    color: #fff;
-    border: none;
-    display: inline-block;
-    line-height: 100%;
-
-}
 
 
 .rules{
     background-color:#1fcca4;
     border-bottom: 0.1vw solid #283e50;
+    display: inline;
+    width: 100%;
+
 }
 
 .rules:hover {
@@ -98,9 +95,20 @@ button{
 .start_game{
     position: relative;
     background-color: #0197f6;
+    display: inline;
+    width: 100%;
+
 }
 
 .start_game:hover{
     background-color:#0090e9;
 }
 
+a:link {
+    text-decoration: none;
+    color: #fff;
+  }
+  a:visited {
+    text-decoration: none;
+    color: #fff;
+  }
