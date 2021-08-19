@@ -1,9 +1,11 @@
 body{
-    width: 100%;
+    max-width: 100%;
+    display: flex;
     background:linear-gradient(#615dad,#ffc8da);
     background-repeat: no-repeat;
     background-size:cover;
     height: 100vmax;
+
 }
 .container{
     margin: 0 auto;
@@ -16,48 +18,77 @@ body{
     background-color:#283e50;
     margin: 0 auto;
     color: #fff;
-    width: 60%;
+    width: 80%;
 }
+/*zóna pro responzivilitu textu*/
+@media screen and (min-width: 601px) {
+    h1 {
+        font-size: 35px;
+      }
+    p {
+      font-size: 15px;
+    }
+    button {
+        font-size: 15px;
+        height:4vw;
+      }
+  }
 
+  @media screen and (max-width: 600px) {
+    h1 {
+        font-size:20px;
+      }
+    p {
+      font-size:11px;
+    }
+    button {
+        font-size:11px;
+        height:6vw;
+      }
+  }
+
+  /*zóna pro zbytek stylování*/
 p {
-    font-size:2vw;
-    margin:10px;
-    padding-bottom: 20px;
+
+    margin:0.7vw 2vw 0.7vw 2vw;
+    padding-bottom: 0.8vw;
     font-family: sans-serif;
 }
 
 h1{
     margin: 0 auto;
     font-family: "Lobster";
-    padding-top:20px;
-    font-size:5vw;
+    padding-top:0.8vw;
     font-weight: 100;
 }
+
 
 img{
     margin: 0 auto;
     display: block;
-    width: 60%;
+    width: 80%;
     border-radius: 8px 8px 0 0;
 
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
 }
 
 button{
     width: 100%;
     color: #fff;
     border: none;
-    height:6.5vw;
-    font-size:2vw;
+    display: inline-block;
+    line-height: 100%;
+
 }
 
-hr{
-    border-top: 0.0001em solid #283e50;
-    margin: 0 auto;
-    border-bottom: none;
-}
 
 .rules{
     background-color:#1fcca4;
+    border-bottom: 0.1vw solid #283e50;
 }
 
 .rules:hover {
