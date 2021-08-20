@@ -30,7 +30,7 @@ body{
     }
     a {
         font-size: 15px;
-        height:3vw;
+        height:2vw;
       }
   }
 
@@ -43,7 +43,7 @@ body{
     }
     a {
         font-size:11px;
-        height:5vw;
+        height:2vw;
       }
   }
 
@@ -104,12 +104,8 @@ img{
 .start_game:hover{
     background-color:#0090e9;
 }
+a {
+  text-decoration: none;
+  color: #fff;
+}
 
-a:link {
-    text-decoration: none;
-    color: #fff;
-  }
-  a:visited {
-    text-decoration: none;
-    color: #fff;
-  }
