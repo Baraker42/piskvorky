@@ -34,6 +34,9 @@ body{
         font-size: 15px;
 
       }
+    li {
+        font-size:15px;
+    }
   }
 
   @media screen and (max-width: 600px) {
@@ -46,6 +49,9 @@ body{
     a {
         font-size:9px;
       }
+    li {
+        font-size:9px;
+    }
   }
 
   /*zóna pro zbytek stylování*/
@@ -64,11 +70,12 @@ h1{
     font-weight: 100;
 }
 
-
 img{
+    width: 80%;
     margin: 0 auto;
     display: block;
-    width: 80%;
+}
+.tic-toc img{
     border-radius: 8px 8px 0 0;
 
 }
@@ -114,5 +121,21 @@ a {
   text-decoration: none;
   color: #fff;
   height:4vw;
+  font-family: sans-serif;
+}
+/*specifikace stránky pravidla*/
+.list-pravidla{
+    text-align:left;
+}
+
+.list-pravidla li{
+    margin-bottom:10px;
+    margin-right: 10px;;
+}
+
+.game-symbol{
+    filter: invert();
+    width:13px;
+    display: inline;
 }
 
