@@ -157,18 +157,16 @@ a {
 .instruction{
     font-style: italic;
     font-family: sans-serif;
-    flex-direction: row;
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
-    align-content: flex-start;
     margin-bottom: 20px;
 }
 
 .instruction figure{
     max-width: 300px;
     padding:0;
-    margin:20px;
+    margin:35px;
 }
 
 .instruction img{
