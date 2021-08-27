@@ -142,5 +142,35 @@ a {
 }
 .instruction{
     font-style: italic;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    
+
+}
+.instruction img{
+    max-width: 250px;
 }
 
+.instruction > div{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding:0;
+    max-width:250px;
+}
+
+.instruction p{
+    display: block;
+    max-width:250px;
+}
+
+.instruction ul li{
+
+    justify-content: center;
+
+}
+
+.container-instruction{
+    max-width:250px;
+}
