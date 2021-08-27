@@ -21,6 +21,10 @@ body{
     width: 80%;
 }
 
+.text-pravidla{
+    border-radius:8px 8px 0 0;
+}
+
 /*zóna pro responzivilitu textu*/
 @media screen and (min-width: 601px) {
     h1 {
