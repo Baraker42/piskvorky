@@ -145,17 +145,14 @@ a {
     flex-direction: row;
     flex-wrap: wrap;
     display: flex;
+    justify-content: flex-start;
     
-
 }
 .instruction img{
     max-width: 250px;
 }
 
 .instruction > div{
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
     padding:0;
     max-width:250px;
 }
@@ -165,11 +162,6 @@ a {
     max-width:250px;
 }
 
-.instruction ul li{
-
-    justify-content: center;
-
-}
 
 .container-instruction{
     max-width:250px;
