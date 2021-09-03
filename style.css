@@ -11,7 +11,7 @@ body{
     margin: 0 auto;
     margin-top: 80px;
     text-align: center;
-    width: 60%;
+    width: 50%;
 }
 
 .text{
@@ -25,6 +25,7 @@ body{
     border-radius:8px 8px 0 0;
 }
 
+
 /*zóna pro responzivilitu textu*/
 @media screen and (min-width: 601px) {
     h1 {
@@ -36,7 +37,6 @@ body{
     a {
         font-size: 15px;
         height:50px;
-
       }
     li {
         font-size:15px;
@@ -93,7 +93,6 @@ img{
 .tic-toc{
     border-radius: 8px 8px 0 0;
     width: 80%;
-
 }
 
 .buttons{
@@ -164,12 +163,38 @@ a {
 }
 
 .instruction figure{
-    max-width: 300px;
+    max-width: 330px;
     padding:0;
-    margin:35px;
+    margin:15px;
 }
 
 .instruction img{
     margin-bottom:10px;
     width: 100%;
+}
+
+button {
+    width: 100%;
+    height:100%;
+    opacity: 0.35;
+    margin-bottom: 0;
+    border:0;
+
+}
+button:hover{
+    opacity: 0.5;
+}
+
+#container-sketch{
+    width:450px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    border: 0.5px, solid black;
+}
+
+.playground{
+   display:block;
+   border:1px solid black;
+   width:40px;
+   height:40px;
 }
