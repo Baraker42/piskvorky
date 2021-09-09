@@ -1,4 +1,4 @@
-
+//Skript pro tvorbu hrací mřížky
 var height =10;
 var width = 10;
 var resetBoxes = function () {
@@ -18,5 +18,4 @@ var resetBoxes = function () {
         }
     }
 };
-
 resetBoxes()
