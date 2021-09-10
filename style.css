@@ -143,6 +143,11 @@ a {
     margin-bottom:10px;
 }
 
+.game-menu-container{
+    width: 80%;
+    margin: 0 auto;
+}
+
 
 
 #container-sketch{
