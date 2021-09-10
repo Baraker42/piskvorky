@@ -23,78 +23,14 @@ body{
 .text-pravidla{
     border-radius:8px 8px 0 0;
 }
-
-/*zóna pro responzivilitu obsahu napříč jednotlivými stránkami*/
-@media screen and (min-width: 1001px) {
-    h1 {
-        font-size: 35px;
-      }
-    p {
-      font-size: 15px;
-    }
-    a {
-        font-size: 15px;
-        height:50px;
-      }
-    li {
-        font-size:15px;
-    }
-
-    figcaption {
-        font-size: 15px;
-    }
-
-    .playground {
-        width: 3vw;
-        height: 3vw;
-    }
-   .game-header {
-       max-width: 80%;
-   }
-   .left-menu p{
-    font-size: 1.8vw;
+p{
+    font-family: sans-serif;
 }
-  }
-
-  @media screen and (max-width: 1000px) {
-    h1 {
-        font-size:22px;
-      }
-    p {
-      font-size:12px;
-    }
-    a {
-        font-size:12px;
-        height:25px;
-      }
-    li {
-        font-size:12px;
-    }
-    figcaption{
-        font-size:12px;
-    }
-    ol{
-        padding-inline-start: 20px;
-    }
-    .container{
-        width:95%;
-    }
-
-    .playground {
-        width: 7vw;
-        height: 7vw;
-    }
-    .left-menu p{
-        font-size: 5.8vw;
-    }
-
-  }
-
   /*zóna pro základní stylování*/
-p {
+.homepage-p {
     margin:0.7vw 2vw 0.7vw 2vw;
     padding-bottom: 0.8vw;
-    font-family: sans-serif;
+
 }
 
 h1{
@@ -193,7 +129,7 @@ a {
 
 /* stylování stánky s hrou*/
 .game-container{
-    width: 50%;
+    width: 40%;
     max-width: 80vmin;
 }
 
@@ -206,10 +142,9 @@ a {
     font-size:6.5vh;
     margin-bottom:10px;
 }
-.game-menu-container{
-    display:flex;
-    justify-content: space-around;
-}
+
+
+
 #container-sketch{
     width:100%;
     display: flex;
@@ -238,10 +173,10 @@ button:focus{
 
 .left-menu{
     display: flex;
-    margin-right: 70px;
+    float: left;
 }
 .left-menu p{
-    margin-left: 0;
+    margin-top:10%;
     display: inline-flex;
     font-weight: bold;
     align-items: center;
@@ -255,6 +190,7 @@ button:focus{
 .right-menu{
     display:flex;
     padding: 0;
+    float: right;
 }
 
 .menu-symbol img{
@@ -286,3 +222,73 @@ button:focus{
 .restart:hover{
     background:#0090e9;
 }
+
+
+/*zóna pro responzivilitu obsahu napříč jednotlivými stránkami*/
+@media screen and (min-width: 601px) {
+    h1 {
+        font-size: 35px;
+      }
+    p {
+      font-size: 15px;
+    }
+    a {
+        font-size: 15px;
+        height:50px;
+      }
+      /* responzivilita pravidel*/
+    li {
+        font-size:15px;
+    }
+    /*konec respozivility pravidel --- začátek respozivility hry*/
+    figcaption {
+        font-size: 15px;
+    }
+
+    .playground {
+        width: 3vw;
+        height: 3vw;
+    }
+   .game-header {
+       max-width: 80%;
+   }
+   .left-menu p{
+    font-size: 30px;
+}
+  }
+/*vzhled pro menší zařízení*/
+  @media screen and (max-width: 600px) {
+      /*pro celý web*/
+    h1 {
+        font-size:22px;
+      }
+    p {
+      font-size:12px;
+    }
+    a {
+        font-size:12px;
+        height:25px;
+      }
+      /*pro stránku s pravidly*/
+    li {
+        font-size:12px;
+    }
+    figcaption{
+        font-size:12px;
+    }
+    ol{
+        padding-inline-start: 20px;
+    }
+    .container{
+        width:95%;
+    }
+    /*pro stránku s hrou*/
+    .playground {
+        width: 6.5vw;
+        height: 6.5vw;
+    }
+    .left-menu p{
+        font-size: 5.8vw;
+    }
+
+  }
