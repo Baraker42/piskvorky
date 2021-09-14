@@ -4,12 +4,12 @@ body{
     background-repeat: no-repeat;
     background-size:cover;
     background-attachment: fixed;
-    height: 100vmax;
+    height: 80vmax;
 }
 .container{
     margin: 0 auto;
     margin-top: 80px;
-    width: 50%;
+    width: 60%;
     text-align: center;
     color: white;
 }
@@ -30,7 +30,6 @@ p{
 .homepage-p {
     margin:0.7vw 2vw 0.7vw 2vw;
     padding-bottom: 0.8vw;
-
 }
 
 h1{
@@ -44,6 +43,7 @@ img{
     margin: 0 auto;
     display: block;
 }
+
 .tic-toc{
     border-radius: 8px 8px 0 0;
     width: 80%;
@@ -254,6 +254,9 @@ button:focus{
       .container{
         width:95%;
     }
+    .game-container{
+        max-width:80vmin;
+    }
       h1 {
         font-size:22px;
       }
@@ -272,9 +275,9 @@ button:focus{
         font-size:12px;
     }
     ol{
-        padding-inline-start: 20px;
+        padding-inline-start: 30px;
     }
-    
+
     /*pro stránku s hrou*/
     .playground {
         width: 6.5vw;
