@@ -6,7 +6,6 @@ var resetBoxes = function () {
     for (var i = 0; i < height; i++) {
         var column = document.createElement("div");
         column.setAttribute("class",("playground-column"+i))
-        console.log(i)
         sketch.appendChild(column)
         for (var j = 0; j < width; j++) {
             var cell=document.createElement("div");
@@ -14,7 +13,6 @@ var resetBoxes = function () {
             var cudlik = document.createElement("button");
             column.appendChild(cell)
             cell.appendChild(cudlik)
-
         }
     }
 };
