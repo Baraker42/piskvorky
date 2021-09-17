@@ -65,37 +65,114 @@ var symbolFunction = function(){
 
 
 var currentSituation = function () {
-    victor=0
-    for (var i = 1; i < 5; i++){
-        var a = document.activeElement.id;
-        a=parseInt(a)
-        isSymbol = document.getElementById(a+i).innerHTML;
-        if (isSymbol.includes(testsymbol)){
-            victor++
+    //columnSituation()
+    //vyhodnocení sloupce
+    var columnSituation =function(){
+        var victor=0
+        for (var i = 1; i < 5; i++){
+            var a = document.activeElement.id;
+            a=parseInt(a)
+            isSymbol = document.getElementById(a+i).innerHTML;
+            if (isSymbol.includes(testsymbol)){
+                victor++
+            }
+            else{
+                break
+            }
         }
-        else{
-            break
+        for (var i = 1; i < 5; i++){
+            var a = document.activeElement.id;
+            a=parseInt(a)
+            isSymbol = document.getElementById(a-i).innerHTML;
+            if (isSymbol.includes(testsymbol)){
+                victor++
+            }
+            else{
+                break
+            }
         }
-    }
-    for (var i = 1; i < 5; i++){
-        var a = document.activeElement.id;
-        a=parseInt(a)
-        isSymbol = document.getElementById(a-i).innerHTML;
-        if (isSymbol.includes(testsymbol)){
-            victor++
         }
-        else{
-            break
-        }
-    }
 
+    //vyhodnocení řádku
+    var rowSituation =function(){
+        var victor=0
+        for (var i = 1; i < 5; i++){
+            var a = document.activeElement.id;
+            rowPlus=i*10
+            a=parseInt(a)
+            isSymbol = document.getElementById(a+rowPlus).innerHTML;
+            if (isSymbol.includes(testsymbol)){
+                victor++
+            }
+            else{
+                break
+            }
+        }
+        for (var i = 1; i < 5; i++){
+            var a = document.activeElement.id;
+            a=parseInt(a)
+            rowMinus = i*-10
+            isSymbol = document.getElementById(rowMinus).innerHTML;
+            if (isSymbol.includes(testsymbol)){
+                victor++
+            }
+            else{
+                break
+            }
+        }
+        }
+
+        //vyhodnocení šikmé
+    var diagonalSituation =function(){
+        var victor=0
+        for (var i = 1; i < 5; i++){
+            var a = document.activeElement.id;
+            a=parseInt(a)
+            diagonal =(i*10)+i
+            isSymbol = document.getElementById(diagoval).innerHTML;
+            if (isSymbol.includes(testsymbol)){
+                victor++
+            }
+            else{
+                break
+            }
+        }
+        for (var i = 1; i < 5; i++){
+            var a = document.activeElement.id;
+            a=parseInt(a)
+            diagonalMinus =(i-10)-i
+            isSymbol = document.getElementById(a-i).innerHTML;
+            if (isSymbol.includes(testsymbol)){
+                victor++
+            }
+            else{
+                break
+            }
+        }
+        }
+//rowSituation()
+
+//diagonalSituation()
+
+
+
+
+
+winnerFunction = function(){
     if (victor==4){
-        alert("vyhrává "+testsymbol)
+        if (testsymbol=="circle.svg"){
+            winner = "kolečko"
+        }
+        else{
+            winner = "křížek"
+        }
+
+        setTimeout(function(){ alert("vyhrává "+winner); }, 100);
     }
 
 
 }
-
+}
 var elements = document.getElementsByClassName("sandbox");
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', symbolFunction, false);
