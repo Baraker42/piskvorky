@@ -74,15 +74,14 @@ var currentSituation = function () {
         try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
-            var aParent = document.getElementById(a).parentElement
-            var aColumn = aParent.parentElement
-
             a=parseInt(a)
             isSymbol = document.getElementById(a+i).innerHTML;
+
+            var aParent = document.getElementById(a).parentElement
+            var aColumn = aParent.parentElement
             var symbolParent = document.getElementById(a+i).parentElement
             var symbolColumn = symbolParent.parentElement
             var shallPass = aColumn == symbolColumn
-            
 
             if (isSymbol.includes(testsymbol)&&shallPass){
                 victor++
@@ -171,7 +170,17 @@ var currentSituation = function () {
             a=parseInt(a)
             var diagonal =(i*10)+i
             isSymbol = document.getElementById(a+diagonal).innerHTML;
-            if (isSymbol.includes(testsymbol)){
+
+            var aParent = document.getElementById(a).parentElement
+            var aColumn = aParent.parentElement
+            console.log(aColumn)
+            var symbolParent = document.getElementById(a+diagonal).parentElement
+            console.log(symbolParent)
+            var symbolDiagonal = symbolParent.parentElement
+            console.log(symbolDiagonal)
+            var shallPass = aColumn !== symbolDiagonal
+
+            if (isSymbol.includes(testsymbol)&&shallPass){
                 victor++
             }
             else{
@@ -186,7 +195,14 @@ var currentSituation = function () {
             a=parseInt(a)
             diagonalMinus =(i*10)+i
             isSymbol = document.getElementById(a-diagonalMinus).innerHTML;
-            if (isSymbol.includes(testsymbol)){
+
+            var aParent = document.getElementById(a).parentElement
+            var aColumn = aParent.parentElement
+            var symbolParent = document.getElementById(a-diagonalMinus).parentElement
+            var symbolDiagonal = symbolParent.parentElement
+            var shallPass = aColumn !== symbolDiagonal
+
+            if (isSymbol.includes(testsymbol)&&shallPass){
                 victor++
             }
             else{
@@ -213,7 +229,14 @@ var currentSituation = function () {
                 a=parseInt(a)
                 var diagonal =(i*10)-i
                 isSymbol = document.getElementById(a+diagonal).innerHTML;
-                if (isSymbol.includes(testsymbol)){
+
+                var aParent = document.getElementById(a).parentElement
+                var aColumn = aParent.parentElement
+                var symbolParent = document.getElementById(a+diagonal).parentElement
+                var symbolDiagonal = symbolParent.parentElement
+                var shallPass = aColumn !== symbolDiagonal
+
+                if (isSymbol.includes(testsymbol)&&shallPass){
                     victor++
                 }
                 else{
@@ -228,7 +251,14 @@ var currentSituation = function () {
                 a=parseInt(a)
                 diagonalMinus =(i*10)-i
                 isSymbol = document.getElementById(a-diagonalMinus).innerHTML;
-                if (isSymbol.includes(testsymbol)){
+
+                var aParent = document.getElementById(a).parentElement
+                var aColumn = aParent.parentElement
+                var symbolParent = document.getElementById(a-diagonalMinus).parentElement
+                var symbolDiagonal = symbolParent.parentElement
+                var shallPass = aColumn !== symbolDiagonal
+
+                if (isSymbol.includes(testsymbol)&&shallPass){
                     victor++
                 }
                 else{
@@ -269,7 +299,7 @@ var currentSituation = function () {
                 }
             }
             setTimeout(confirmYesNo, 100);
-            //console.log(confirmYes)
+
 
         }
 }
