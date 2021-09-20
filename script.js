@@ -67,7 +67,7 @@ var symbolFunction = function(){
 
 
 var currentSituation = function () {
-    
+
     //vyhodnocení sloupce
     var columnSituation =function(){
         var victor=0
@@ -105,6 +105,7 @@ var currentSituation = function () {
     //vyhodnocení řádku
     var rowSituation =function(){
         var victor=0
+        try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
             rowPlus=i*10
@@ -118,6 +119,9 @@ var currentSituation = function () {
                 break
             }
         }
+    }
+    catch{}
+        try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
             a=parseInt(a)
@@ -130,7 +134,8 @@ var currentSituation = function () {
                 break
             }
         }
-
+    }
+    catch{}
         if (victor >= 4){
             return true
         }
@@ -142,6 +147,7 @@ var currentSituation = function () {
 
     var leftDiagonalSituation =function(){
         var victor=0
+        try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
             a=parseInt(a)
@@ -154,6 +160,9 @@ var currentSituation = function () {
                 break
             }
         }
+        }
+        catch{}
+        try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
             a=parseInt(a)
@@ -166,6 +175,9 @@ var currentSituation = function () {
                 break
             }
         }
+        }
+        catch{}
+        
         if (victor >= 4){
             return true
         }
@@ -178,6 +190,7 @@ var currentSituation = function () {
 
         var rightDiagonalSituation =function(){
             var victor=0
+            try{
             for (var i = 1; i < 5; i++){
                 var a = document.activeElement.id;
                 a=parseInt(a)
@@ -190,6 +203,9 @@ var currentSituation = function () {
                     break
                 }
             }
+            }
+            catch{}
+            try{
             for (var i = 1; i < 5; i++){
                 var a = document.activeElement.id;
                 a=parseInt(a)
@@ -202,6 +218,8 @@ var currentSituation = function () {
                     break
                 }
             }
+            }
+            catch{}
             if (victor >= 4){
                 return true
             }
