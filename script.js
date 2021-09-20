@@ -13,6 +13,7 @@ var resetBoxes = function () {
             cell.setAttribute("class","playground")
             var cudlik = document.createElement("button");
             cudlik.setAttribute("class","sandbox")
+            cudlik.classList.add(j)
             cudlik.setAttribute("id",counter)
             column.appendChild(cell)
             cell.appendChild(cudlik)
@@ -173,12 +174,10 @@ var currentSituation = function () {
 
             var aParent = document.getElementById(a).parentElement
             var aColumn = aParent.parentElement
-            console.log(aColumn)
             var symbolParent = document.getElementById(a+diagonal).parentElement
-            console.log(symbolParent)
             var symbolDiagonal = symbolParent.parentElement
-            console.log(symbolDiagonal)
             var shallPass = aColumn !== symbolDiagonal
+            
 
             if (isSymbol.includes(testsymbol)&&shallPass){
                 victor++
@@ -226,47 +225,88 @@ var currentSituation = function () {
             try{
             for (var i = 1; i < 5; i++){
                 var a = document.activeElement.id;
+                rareNumber=document.getElementById(a)
                 a=parseInt(a)
+                getRareNumber=(rareNumber.className[8])
+                getRareNumber=parseInt(getRareNumber)
                 var diagonal =(i*10)-i
                 isSymbol = document.getElementById(a+diagonal).innerHTML;
-
                 var aParent = document.getElementById(a).parentElement
                 var aColumn = aParent.parentElement
                 var symbolParent = document.getElementById(a+diagonal).parentElement
                 var symbolDiagonal = symbolParent.parentElement
                 var shallPass = aColumn !== symbolDiagonal
 
-                if (isSymbol.includes(testsymbol)&&shallPass){
+                rareNumber=document.getElementById(a)
+                getRareNumber=(rareNumber.className[8])
+                getRareNumber=parseInt(getRareNumber)
+                rareNumber2=document.getElementById(a+diagonal)
+                getRareNumber2=(rareNumber2.className[8])
+                getRareNumber2=parseInt(getRareNumber2)
+
+                veryGood=getRareNumber-getRareNumber2
+
+                var biggerBoat = veryGood > 0
+
+
+
+
+                if (isSymbol.includes(testsymbol)&&shallPass&&biggerBoat){
                     victor++
                 }
                 else{
                     break
                 }
             }
+
+
             }
             catch{}
             try{
+            ocean=[]
             for (var i = 1; i < 5; i++){
                 var a = document.activeElement.id;
                 a=parseInt(a)
                 diagonalMinus =(i*10)-i
                 isSymbol = document.getElementById(a-diagonalMinus).innerHTML;
-
                 var aParent = document.getElementById(a).parentElement
                 var aColumn = aParent.parentElement
                 var symbolParent = document.getElementById(a-diagonalMinus).parentElement
                 var symbolDiagonal = symbolParent.parentElement
                 var shallPass = aColumn !== symbolDiagonal
 
-                if (isSymbol.includes(testsymbol)&&shallPass){
+                rareNumber=document.getElementById(a)
+                getRareNumber=(rareNumber.className[8])
+                getRareNumber=parseInt(getRareNumber)
+                
+                rareNumber2=document.getElementById(a-diagonalMinus)
+                getRareNumber2=(rareNumber2.className[8])
+                getRareNumber2=parseInt(getRareNumber2)
+                
+                veryGood=getRareNumber-getRareNumber2
+                
+                
+                var biggerBoat = veryGood >0
+                ocean.push(biggerBoat)
+            
+
+
+
+
+                if (isSymbol.includes(testsymbol)&&shallPass&&biggerBoat){
                     victor++
                 }
                 else{
                     break
                 }
+
             }
+
             }
+
             catch{}
+
+
             if (victor >= 4){
                 return true
             }
@@ -283,7 +323,7 @@ var currentSituation = function () {
         var leftDiagonalResult = leftDiagonalSituation();
         var rightDiagonalResult = rightDiagonalSituation();
 
-        if (columnResult||rowResult||leftDiagonalResult||rightDiagonalResult){
+        if (columnResult||rowResult||rightDiagonalResult||leftDiagonalResult){
             if (testsymbol.includes("circle.svg")){
                 winnerSymbol="kolečko"
             }
