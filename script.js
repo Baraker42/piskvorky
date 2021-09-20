@@ -71,28 +71,45 @@ var currentSituation = function () {
     //vyhodnocení sloupce
     var columnSituation =function(){
         var victor=0
+        try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
+            var aParent = document.getElementById(a).parentElement
+            var aColumn = aParent.parentElement
+
             a=parseInt(a)
             isSymbol = document.getElementById(a+i).innerHTML;
-            if (isSymbol.includes(testsymbol)){
+            var symbolParent = document.getElementById(a+i).parentElement
+            var symbolColumn = symbolParent.parentElement
+            var shallPass = aColumn == symbolColumn
+            
+
+            if (isSymbol.includes(testsymbol)&&shallPass){
                 victor++
             }
             else{
                 break
             }
         }
+        }
+        catch{}
+        try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
             a=parseInt(a)
             isSymbol = document.getElementById(a-i).innerHTML;
-            if (isSymbol.includes(testsymbol)){
+            var symbolParent = document.getElementById(a-i).parentElement
+            var symbolColumn = symbolParent.parentElement
+            var shallPass = aColumn == symbolColumn
+            if (isSymbol.includes(testsymbol)&&shallPass){
                 victor++
             }
             else{
                 break
             }
         }
+        }
+        catch{}
         if (victor >= 4){
             return true
         }
@@ -110,6 +127,7 @@ var currentSituation = function () {
             var a = document.activeElement.id;
             rowPlus=i*10
             a=parseInt(a)
+
 
             isSymbol = document.getElementById(a+rowPlus).innerHTML;
             if (isSymbol.includes(testsymbol)){
@@ -177,7 +195,6 @@ var currentSituation = function () {
         }
         }
         catch{}
-        
         if (victor >= 4){
             return true
         }
