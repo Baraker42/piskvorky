@@ -177,6 +177,10 @@ img .mmm{
     border-radius:4px;
 }
 
+button{
+    padding:0;
+}
+
 .home{
     background: #1fcca4;
     width: 3em;
@@ -218,10 +222,6 @@ button:hover {
     opacity: 0.6;
 }
 
-
-/*button:focus{
-    opacity: 0.5;
-}*/
 
 
 /*zóna pro responzivilitu obsahu napříč jednotlivými stránkami*/
