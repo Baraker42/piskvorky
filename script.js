@@ -1,14 +1,12 @@
 //Skript pro tvorbu hrací mřížky
-var height =10;
-var width = 10;
 var createBoxes = function () {
    var sketch = document.getElementById("container-sketch");
    var counter = 0;
-    for (var i = 0; i < height; i++) {
+    for (var i = 0; i < 10; i++) {
         var column = document.createElement("div");
         column.setAttribute("class",("playground-column"+i));
         sketch.appendChild(column);
-        for (var j = 0; j < width; j++) {
+        for (var j = 0; j < 10; j++) {
             var cell=document.createElement("div");
             cell.setAttribute("class","playground");
             var playButton = document.createElement("button");
@@ -34,30 +32,29 @@ currentPlayer.appendChild(symbol)
 
 
 
-
 var symbolFunction = function(){
     var activeButton =document.activeElement.id;
     var checkIfFree = document.activeElement.innerHTML;
     if (checkIfFree == ""){
-    var inputSymbol = document.getElementById(activeButton)
-    symbol = document.createElement("img");
-    symbol.setAttribute("class","active-symbol")
-    symbol.setAttribute("src",activeSymbol)
+        var inputSymbol = document.getElementById(activeButton)
+        symbol = document.createElement("img");
+        symbol.setAttribute("class","active-symbol")
+        symbol.setAttribute("src",activeSymbol)
 
-    //funkce pro zapsání symbolu do hracího pole
-    var symbolChanger = function(activeSymbol){
-        symbol.setAttribute("class","input-symbol")
-        inputSymbol.appendChild(symbol)
-        currentSituation();
-        if (activeSymbol == "cross.svg"){;
-            activeSymbol = "circle.svg";}
-            else{
-                activeSymbol = "cross.svg"
-            }
-            currentPlayer.innerHTML ="<img class='active-symbol' src="+activeSymbol+">"
-        return activeSymbol
-    }
-    activeSymbol=symbolChanger(activeSymbol)
+        //funkce pro zapsání symbolu do hracího pole
+        var symbolChanger = function(activeSymbol){
+            symbol.setAttribute("class","input-symbol")
+            inputSymbol.appendChild(symbol)
+            currentSituation();
+            if (activeSymbol == "cross.svg"){;
+                activeSymbol = "circle.svg";}
+                else{
+                    activeSymbol = "cross.svg"
+                }
+                currentPlayer.innerHTML ="<img class='active-symbol' src="+activeSymbol+">"
+            return activeSymbol
+        }
+        activeSymbol=symbolChanger(activeSymbol)
 }
 };
 
@@ -67,13 +64,14 @@ var currentSituation = function () {
     //vyhodnocení sloupce
     var columnSituation =function(){
         var victor=0
+        var a = document.activeElement.id;
+        a=parseInt(a)
+        var aParent = document.getElementById(a).parentElement
+        var aColumn = aParent.parentElement
+
         try{
         for (var i = 1; i < 5; i++){
-            var a = document.activeElement.id;
-            a=parseInt(a)
             isSymbol = document.getElementById(a+i).innerHTML;
-            var aParent = document.getElementById(a).parentElement
-            var aColumn = aParent.parentElement
             var symbolParent = document.getElementById(a+i).parentElement
             var symbolColumn = symbolParent.parentElement
             var shallPass = aColumn == symbolColumn
@@ -88,10 +86,8 @@ var currentSituation = function () {
         }
         catch{}
         try{
-        for (var i = 1; i < 5; i++){
-            var a = document.activeElement.id;
-            a=parseInt(a)
-            isSymbol = document.getElementById(a-i).innerHTML;
+        for (var i = -1; i < 5; i--){
+            isSymbol = document.getElementById(a+i).innerHTML;
             var symbolParent = document.getElementById(a-i).parentElement
             var symbolColumn = symbolParent.parentElement
             var shallPass = aColumn == symbolColumn
