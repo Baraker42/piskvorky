@@ -315,10 +315,10 @@ var currentSituation = function () {
         }
 }
 
-
-
-
 var elements = document.getElementsByClassName("sandbox");
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', symbolFunction, false);
 }
+const leftRight =["vpravo","vlevo"]
+const randomElement = leftRight[Math.floor(Math.random() * leftRight.length)];
+setTimeout(() => { alert("Začíná hráč "+ randomElement) }, 10)
