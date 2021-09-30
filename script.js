@@ -292,9 +292,6 @@ var currentSituation = function () {
             }
             }
 
-
-
-
         var columnResult = columnSituation();
         var rowResult = rowSituation();
         var leftDiagonalResult = leftDiagonalSituation();
@@ -308,7 +305,6 @@ var currentSituation = function () {
                 winnerSymbol="křížek"
             }
 
-
             var confirmYesNo = function(){
                 var confirmYes = confirm("Vyhrává "+winnerSymbol+" chcete hrát znovu?")
                 if (confirmYes===true){
@@ -316,12 +312,8 @@ var currentSituation = function () {
                 }
             }
             setTimeout(confirmYesNo, 100);
-
-
         }
 }
-
-
 
 
 
