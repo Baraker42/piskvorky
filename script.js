@@ -59,6 +59,7 @@ var symbolFunction = function(){
 };
 
 
+
 var currentSituation = function () {
 
     //vyhodnocení sloupce
@@ -95,13 +96,14 @@ var currentSituation = function () {
         victor = victor + (columnVictor(-1))
         }
         catch{}
-
+        
         if (victor >= 4){
             return true
         }
         else{
             return false
         }
+
 
         }
 
@@ -293,6 +295,7 @@ var currentSituation = function () {
             }
 
         var columnResult = columnSituation();
+        console.log(columnResult)
         var rowResult = rowSituation();
         var leftDiagonalResult = leftDiagonalSituation();
         var rightDiagonalResult = rightDiagonalSituation();
@@ -313,6 +316,8 @@ var currentSituation = function () {
             }
             setTimeout(confirmYesNo, 100);
         }
+
+        
 }
 
 var elements = document.getElementsByClassName("sandbox");
