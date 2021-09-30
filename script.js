@@ -69,37 +69,33 @@ var currentSituation = function () {
         var aParent = document.getElementById(a).parentElement
         var aColumn = aParent.parentElement
 
+        var columnVictor= function(num){
+            column=0
+            basicNum=num
+            for (var i = 1; i <5;i++){
+                isSymbol = document.getElementById(a+num).innerHTML;
+                var symbolParent = document.getElementById(a+num).parentElement
+                var symbolColumn = symbolParent.parentElement
+                var shallPass = aColumn == symbolColumn
+                num=num+basicNum
+            if (isSymbol.includes(activeSymbol)&&shallPass){
+                column++
+            }
+            else{
+                break
+            }
+            }
+            return column
+        }
         try{
-        for (var i = 1; i < 5; i++){
-            isSymbol = document.getElementById(a+i).innerHTML;
-            var symbolParent = document.getElementById(a+i).parentElement
-            var symbolColumn = symbolParent.parentElement
-            var shallPass = aColumn == symbolColumn
+        victor = columnVictor(1)
+        }
+        catch{}
+        try{
+        victor = victor + (columnVictor(-1))
+        }
+        catch{}
 
-            if (isSymbol.includes(activeSymbol)&&shallPass){
-                victor++
-            }
-            else{
-                break
-            }
-        }
-        }
-        catch{}
-        try{
-        for (var i = -1; i < 5; i--){
-            isSymbol = document.getElementById(a+i).innerHTML;
-            var symbolParent = document.getElementById(a-i).parentElement
-            var symbolColumn = symbolParent.parentElement
-            var shallPass = aColumn == symbolColumn
-            if (isSymbol.includes(activeSymbol)&&shallPass){
-                victor++
-            }
-            else{
-                break
-            }
-        }
-        }
-        catch{}
         if (victor >= 4){
             return true
         }

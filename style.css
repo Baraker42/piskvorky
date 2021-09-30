@@ -160,6 +160,7 @@ img .mmm{
 .active-symbol{
     filter:invert();
     width: 1em;
+    
 }
 
 .right-menu{
@@ -221,6 +222,16 @@ button {
 button:hover {
     opacity: 0.6;
 }
+
+.input-symbol{
+    animation: grow 0.15s;
+}
+
+@keyframes grow {
+    from {width: 0em;}
+    to {width: 1em;}
+  }
+
 
 
 
