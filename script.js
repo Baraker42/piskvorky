@@ -291,6 +291,12 @@ var elements = document.getElementsByClassName("sandbox");
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', symbolFunction, false);
 }
-const leftRight =["vpravo","vlevo"]
-const randomElement = leftRight[Math.floor(Math.random() * leftRight.length)];
-setTimeout(() => { alert("Začíná hráč "+ randomElement) }, 30)
+
+const getName = function(){
+    const player =[];
+    player.push(prompt("Vložte jméno prvního hráče","Jméno"));
+    player.push(prompt("Vložte jméno druhého hráče","Jméno"));
+    const randomElement = player[Math.floor(Math.random() * player.length)];
+    alert("Začíná "+ randomElement);
+}
+setTimeout(getName, 200);
