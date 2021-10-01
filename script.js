@@ -2,6 +2,7 @@
 var createBoxes = function () {
    var sketch = document.getElementById("container-sketch");
    var counter = 0;
+
     for (var i = 0; i < 10; i++) {
         var column = document.createElement("div");
         column.setAttribute("class",("playground-column"+i));
@@ -19,6 +20,7 @@ var createBoxes = function () {
         }
     }
 };
+
 //volá tvorbu mřížky
 createBoxes()
 
@@ -27,60 +29,59 @@ var activeSymbol = "circle.svg";
 var currentPlayer = document.getElementById("current-player");
 symbol = document.createElement("img");
 symbol.setAttribute("class","active-symbol");
-symbol.setAttribute("src",activeSymbol)
-currentPlayer.appendChild(symbol)
+symbol.setAttribute("src",activeSymbol);
+currentPlayer.appendChild(symbol);
 
 
 
 var symbolFunction = function(){
     var activeButton =document.activeElement.id;
     var checkIfFree = document.activeElement.innerHTML;
+
     if (checkIfFree == ""){
-        var inputSymbol = document.getElementById(activeButton)
+        var inputSymbol = document.getElementById(activeButton);
         symbol = document.createElement("img");
-        symbol.setAttribute("class","active-symbol")
-        symbol.setAttribute("src",activeSymbol)
+        symbol.setAttribute("class","active-symbol");
+        symbol.setAttribute("src",activeSymbol);
 
         //funkce pro zapsání symbolu do hracího pole
         var symbolChanger = function(activeSymbol){
-            symbol.setAttribute("class","input-symbol")
-            inputSymbol.appendChild(symbol)
+            symbol.setAttribute("class","input-symbol");
+            inputSymbol.appendChild(symbol);
             currentSituation();
-            if (activeSymbol == "cross.svg"){;
+            if (activeSymbol == "cross.svg"){
                 activeSymbol = "circle.svg";}
                 else{
-                    activeSymbol = "cross.svg"
+                    activeSymbol = "cross.svg";
                 }
-                currentPlayer.innerHTML ="<img class='active-symbol' src="+activeSymbol+">"
-            return activeSymbol
+                currentPlayer.innerHTML ="<img class='active-symbol' src="+activeSymbol+">";
+            return activeSymbol;
         }
-        activeSymbol=symbolChanger(activeSymbol)
+        activeSymbol=symbolChanger(activeSymbol);
 }
 };
-
-
 
 var currentSituation = function () {
 
     //vyhodnocení sloupce
     var columnSituation =function(){
-        var victor=0
+        var victor=0;
         var a = document.activeElement.id;
-        a=parseInt(a)
-        var aParent = document.getElementById(a).parentElement
-        var aColumn = aParent.parentElement
+        a=parseInt(a);
+        var aParent = document.getElementById(a).parentElement;
+        var aColumn = aParent.parentElement;
 
         var columnVictor= function(num){
-            column=0
-            basicNum=num
+            column=0;
+            basicNum=num;
             for (var i = 1; i <5;i++){
                 isSymbol = document.getElementById(a+num).innerHTML;
-                var symbolParent = document.getElementById(a+num).parentElement
-                var symbolColumn = symbolParent.parentElement
-                var shallPass = aColumn == symbolColumn
-                num=num+basicNum
+                var symbolParent = document.getElementById(a+num).parentElement;
+                var symbolColumn = symbolParent.parentElement;
+                var shallPass = aColumn == symbolColumn;
+                num=num+basicNum;
             if (isSymbol.includes(activeSymbol)&&shallPass){
-                column++
+                column++;
             }
             else{
                 break
@@ -89,40 +90,33 @@ var currentSituation = function () {
             return column
         }
         try{
-        victor = columnVictor(1)
+        victor = columnVictor(1);
         }
         catch{}
         try{
-        victor = victor + (columnVictor(-1))
+        victor = victor + (columnVictor(-1));
         }
         catch{}
-        
-        if (victor >= 4){
-            return true
-        }
-        else{
-            return false
-        }
 
-
+        return victor >=4;
         }
 
     //vyhodnocení řádku
     var rowSituation =function(){
-        var victor=0
+        var victor=0;
         try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
-            rowPlus=i*10
-            a=parseInt(a)
+            rowPlus=i*10;
+            a=parseInt(a);
 
 
             isSymbol = document.getElementById(a+rowPlus).innerHTML;
             if (isSymbol.includes(activeSymbol)){
-                victor++
+                victor++;
             }
             else{
-                break
+                break;
             }
         }
     }
@@ -130,12 +124,12 @@ var currentSituation = function () {
         try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
-            rowMinus = i*-10
-            a=parseInt(a)
+            rowMinus = i*-10;
+            a=parseInt(a);
 
             isSymbol = document.getElementById(a+rowMinus).innerHTML;
             if (isSymbol.includes(activeSymbol)){
-                victor++
+                victor++;
             }
             else{
                 break
@@ -143,33 +137,28 @@ var currentSituation = function () {
         }
     }
     catch{}
-        if (victor >= 4){
-            return true
-        }
-        else{
-            return false
-        }
+            return victor >=4;
     }
         //vyhodnocení šikmé z leva
 
     var leftDiagonalSituation =function(){
-        var victor=0
+        var victor=0;
 
         try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
-            a=parseInt(a)
+            a=parseInt(a);
             var diagonal =(i*11)
             isSymbol = document.getElementById(a+diagonal).innerHTML;
 
-            var aParent = document.getElementById(a).parentElement
-            var aColumn = aParent.parentElement
-            var symbolParent = document.getElementById(a+diagonal).parentElement
-            var symbolDiagonal = symbolParent.parentElement
-            var shallPass = aColumn !== symbolDiagonal
+            var aParent = document.getElementById(a).parentElement;
+            var aColumn = aParent.parentElement;
+            var symbolParent = document.getElementById(a+diagonal).parentElement;
+            var symbolDiagonal = symbolParent.parentElement;
+            var shallPass = aColumn !== symbolDiagonal;
 
             if (isSymbol.includes(activeSymbol)&&shallPass){
-                victor++
+                victor++;
             }
             else{
                 break
@@ -180,122 +169,102 @@ var currentSituation = function () {
         try{
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
-            a=parseInt(a)
-            diagonal =(i*11)
+            a=parseInt(a);
+            diagonal =(i*11);
 
             isSymbol = document.getElementById(a-diagonal).innerHTML;
 
-            var aParent = document.getElementById(a).parentElement
-            var aColumn = aParent.parentElement
-            var symbolParent = document.getElementById(a-diagonal).parentElement
-            var symbolDiagonal = symbolParent.parentElement
-            var shallPass = aColumn !== symbolDiagonal
+            var aParent = document.getElementById(a).parentElement;
+            var aColumn = aParent.parentElement;
+            var symbolParent = document.getElementById(a-diagonal).parentElement;
+            var symbolDiagonal = symbolParent.parentElement;
+            var shallPass = aColumn !== symbolDiagonal;
 
             if (isSymbol.includes(activeSymbol)&&shallPass){
-                victor++
+                victor++;
             }
             else{
-                break
+                break;
             }
         }
         }
         catch{}
-        if (victor >= 4){
-            return true
+        return victor >=4;
         }
-        else{
-            return false
-        }
-        }
-
-
 
         var rightDiagonalSituation =function(){
-            var victor=0
+            var victor=0;
             try{
             for (var i = 1; i < 5; i++){
                 var a = document.activeElement.id;
-                rareNumber=document.getElementById(a)
-                a=parseInt(a)
-                getRareNumber=(rareNumber.className[8])
-                getRareNumber=parseInt(getRareNumber)
-                var diagonal =(i*10)-i
+                rareNumber=document.getElementById(a);
+                a=parseInt(a);
+                getRareNumber=(rareNumber.className[8]);
+                getRareNumber=parseInt(getRareNumber);
+                var diagonal =(i*10)-i;
                 isSymbol = document.getElementById(a+diagonal).innerHTML;
-                var aParent = document.getElementById(a).parentElement
-                var aColumn = aParent.parentElement
-                var symbolParent = document.getElementById(a+diagonal).parentElement
-                var symbolDiagonal = symbolParent.parentElement
-                var shallPass = aColumn !== symbolDiagonal
+                var aParent = document.getElementById(a).parentElement;
+                var aColumn = aParent.parentElement;
+                var symbolParent = document.getElementById(a+diagonal).parentElement;
+                var symbolDiagonal = symbolParent.parentElement;
+                var shallPass = aColumn !== symbolDiagonal;
 
-                rareNumber=document.getElementById(a)
-                getRareNumber=(rareNumber.className[8])
-                getRareNumber=parseInt(getRareNumber)
-                rareNumber2=document.getElementById(a+diagonal)
-                getRareNumber2=(rareNumber2.className[8])
-                getRareNumber2=parseInt(getRareNumber2)
+                rareNumber=document.getElementById(a);
+                getRareNumber=(rareNumber.className[8]);
+                getRareNumber=parseInt(getRareNumber);
+                rareNumber2=document.getElementById(a+diagonal);
+                getRareNumber2=(rareNumber2.className[8]);
+                getRareNumber2=parseInt(getRareNumber2);
 
-                veryGood=getRareNumber-getRareNumber2
+                veryGood=getRareNumber-getRareNumber2;
 
-                var biggerBoat = veryGood > 0
+                var biggerBoat = veryGood > 0;
 
                 if (isSymbol.includes(activeSymbol)&&shallPass&&biggerBoat){
-                    victor++
+                    victor++;
                 }
                 else{
                     break
                 }
             }
-
-
             }
             catch{}
-            try{
 
+            try{
             for (var i = 1; i < 5; i++){
                 var a = document.activeElement.id;
-                a=parseInt(a)
-                diagonalMinus =(i*10)-i
+                a=parseInt(a);
+                diagonalMinus =(i*10)-i;
+
                 isSymbol = document.getElementById(a-diagonalMinus).innerHTML;
-                var aParent = document.getElementById(a).parentElement
-                var aColumn = aParent.parentElement
-                var symbolParent = document.getElementById(a-diagonalMinus).parentElement
-                var symbolDiagonal = symbolParent.parentElement
-                var shallPass = aColumn !== symbolDiagonal
+                var aParent = document.getElementById(a).parentElement;
+                var aColumn = aParent.parentElement;
+                var symbolParent = document.getElementById(a-diagonalMinus).parentElement;
+                var symbolDiagonal = symbolParent.parentElement;
+                var shallPass = aColumn !== symbolDiagonal;
 
-                rareNumber=document.getElementById(a)
-                getRareNumber=(rareNumber.className[8])
-                getRareNumber=parseInt(getRareNumber)
-                rareNumber2=document.getElementById(a-diagonalMinus)
-                getRareNumber2=(rareNumber2.className[8])
-                getRareNumber2=parseInt(getRareNumber2)
-                veryGood=getRareNumber-getRareNumber2
-                var biggerBoat = veryGood >0
+                rareNumber=document.getElementById(a);
+                getRareNumber=(rareNumber.className[8]);
+                getRareNumber=parseInt(getRareNumber);
+                rareNumber2=document.getElementById(a-diagonalMinus);
+                getRareNumber2=(rareNumber2.className[8]);
+                getRareNumber2=parseInt(getRareNumber2);
+                veryGood=getRareNumber-getRareNumber2;
+                var biggerBoat = veryGood <0;
 
-
-                if (isSymbol.includes(activeSymbol)&&shallPass&&biggerBoat){
-                    victor++
+                if (isSymbol.includes(activeSymbol)&&shallPass&& biggerBoat){
+                    victor++;
                 }
                 else{
                     break
                 }
-
             }
-
             }
-
             catch{}
-
-
-            if (victor >= 4){
-                return true
-            }
-            else{
-                return false
-            }
+            return victor >=4
             }
 
         var columnResult = columnSituation();
-        console.log(columnResult)
         var rowResult = rowSituation();
         var leftDiagonalResult = leftDiagonalSituation();
         var rightDiagonalResult = rightDiagonalSituation();
@@ -314,10 +283,8 @@ var currentSituation = function () {
                     location.reload();
                 }
             }
-            setTimeout(confirmYesNo, 100);
+            setTimeout(confirmYesNo, 200);
         }
-
-        
 }
 
 var elements = document.getElementsByClassName("sandbox");
@@ -326,4 +293,4 @@ for (var i = 0; i < elements.length; i++) {
 }
 const leftRight =["vpravo","vlevo"]
 const randomElement = leftRight[Math.floor(Math.random() * leftRight.length)];
-setTimeout(() => { alert("Začíná hráč "+ randomElement) }, 10)
+setTimeout(() => { alert("Začíná hráč "+ randomElement) }, 30)
