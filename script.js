@@ -32,8 +32,6 @@ symbol.setAttribute("class","active-symbol");
 symbol.setAttribute("src",activeSymbol);
 currentPlayer.appendChild(symbol);
 
-
-
 var symbolFunction = function(){
     var activeButton =document.activeElement.id;
     var checkIfFree = document.activeElement.innerHTML;
@@ -195,6 +193,7 @@ var currentSituation = function () {
         var rightDiagonalSituation =function(){
             var victor=0;
             try{
+
             for (var i = 1; i < 5; i++){
                 var a = document.activeElement.id;
                 rareNumber=document.getElementById(a);
@@ -271,14 +270,14 @@ var currentSituation = function () {
 
         if (columnResult||rowResult||rightDiagonalResult||leftDiagonalResult){
             if (activeSymbol.includes("circle.svg")){
-                winnerSymbol="kolečko"
+                winnerSymbol=first[0]
             }
             else{
-                winnerSymbol="křížek"
+                winnerSymbol=first[1]
             }
 
             var confirmYesNo = function(){
-                var confirmYes = confirm("Vyhrává "+winnerSymbol+" chcete hrát znovu?")
+                var confirmYes = confirm("Vyhrává "+winnerSymbol+", chcete hrát znovu?")
                 if (confirmYes===true){
                     location.reload();
                 }
@@ -294,9 +293,15 @@ for (var i = 0; i < elements.length; i++) {
 
 const getName = function(){
     const player =[];
+    const newOrder =[];
     player.push(prompt("Vložte jméno prvního hráče","První"));
     player.push(prompt("Vložte jméno druhého hráče","Druhý"));
-    const randomElement = player[Math.floor(Math.random() * player.length)];
+    firstOrder=(Math.floor(Math.random() * player.length))
+    const randomElement = player[firstOrder];
     alert("Začíná "+ randomElement);
+    newOrder[0]=player[firstOrder]
+    player.splice(firstOrder,1)
+    newOrder[1]=player[0]
+    return newOrder
 }
-setTimeout(getName, 200);
+setTimeout(() => {first=getName()}, 50);
