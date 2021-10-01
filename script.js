@@ -294,8 +294,8 @@ for (var i = 0; i < elements.length; i++) {
 
 const getName = function(){
     const player =[];
-    player.push(prompt("Vložte jméno prvního hráče","Jméno"));
-    player.push(prompt("Vložte jméno druhého hráče","Jméno"));
+    player.push(prompt("Vložte jméno prvního hráče","První"));
+    player.push(prompt("Vložte jméno druhého hráče","Druhý"));
     const randomElement = player[Math.floor(Math.random() * player.length)];
     alert("Začíná "+ randomElement);
 }
