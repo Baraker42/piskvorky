@@ -101,20 +101,20 @@ const currentSituation = function () {
         const rowSituation=function(){
             var victor=0;
             const rowVictor=function(num){
-            rowPlus=0
-            for (var i = 1; i < 5; i++){
-                var a = document.activeElement.id;
-                row=i*num;
-                a=parseInt(a);
-                isSymbol = document.getElementById(a+row).innerHTML;
-                if (isSymbol.includes(activeSymbol)){
-                    rowPlus++;
+                rowPlus=0
+                for (var i = 1; i < 5; i++){
+                    var a = document.activeElement.id;
+                    row=i*num;
+                    a=parseInt(a);
+                    isSymbol = document.getElementById(a+row).innerHTML;
+                    if (isSymbol.includes(activeSymbol)){
+                        rowPlus++;
+                    }
+                    else{
+                        break;
+                    }
                 }
-                else{
-                    break;
-            }
-            }
-            return rowPlus;
+                return rowPlus;
             }
             try{
                 victor=rowVictor(10)
@@ -130,66 +130,12 @@ const currentSituation = function () {
 
     const leftDiagonalSituation =function(){
         var victor=0;
-
-        try{
-        for (var i = 1; i < 5; i++){
-            var a = document.activeElement.id;
-            a=parseInt(a);
-            var diagonal =(i*11)
-            isSymbol = document.getElementById(a+diagonal).innerHTML;
-
-            var aParent = document.getElementById(a).parentElement;
-            var aColumn = aParent.parentElement;
-            var symbolParent = document.getElementById(a+diagonal).parentElement;
-            var symbolDiagonal = symbolParent.parentElement;
-            var shallPass = aColumn !== symbolDiagonal;
-
-            if (isSymbol.includes(activeSymbol)&&shallPass){
-                victor++;
-            }
-            else{
-                break
-            }
-        }
-        }
-        catch{}
-        try{
-        for (var i = 1; i < 5; i++){
-            var a = document.activeElement.id;
-            a=parseInt(a);
-            diagonal =(i*-11);
-
-            isSymbol = document.getElementById(a+diagonal).innerHTML;
-
-            var aParent = document.getElementById(a).parentElement;
-            var aColumn = aParent.parentElement;
-            var symbolParent = document.getElementById(a-diagonal).parentElement;
-            var symbolDiagonal = symbolParent.parentElement;
-            var shallPass = aColumn !== symbolDiagonal;
-
-            if (isSymbol.includes(activeSymbol)&&shallPass){
-                victor++;
-            }
-            else{
-                break;
-            }
-        }
-        }
-        catch{}
-        return victor >=4;
-        }
-
-        const rightDiagonalSituation =function(){
-            var victor=0;
-            try{
-
+        const leftDiagonalVictory =function(num){
+            leftDiagonal=0
             for (var i = 1; i < 5; i++){
                 var a = document.activeElement.id;
-                rareNumber=document.getElementById(a);
                 a=parseInt(a);
-                getRareNumber=(rareNumber.className[8]);
-                getRareNumber=parseInt(getRareNumber);
-                var diagonal =(i*10)-i;
+                var diagonal =(i*num)
                 isSymbol = document.getElementById(a+diagonal).innerHTML;
                 var aParent = document.getElementById(a).parentElement;
                 var aColumn = aParent.parentElement;
@@ -197,56 +143,78 @@ const currentSituation = function () {
                 var symbolDiagonal = symbolParent.parentElement;
                 var shallPass = aColumn !== symbolDiagonal;
 
-                rareNumber=document.getElementById(a);
-                getRareNumber=(rareNumber.className[8]);
-                getRareNumber=parseInt(getRareNumber);
-                rareNumber2=document.getElementById(a+diagonal);
-                getRareNumber2=(rareNumber2.className[8]);
-                getRareNumber2=parseInt(getRareNumber2);
-
-                veryGood=getRareNumber-getRareNumber2;
-
-                var biggerBoat = veryGood > 0;
-
-                if (isSymbol.includes(activeSymbol)&&shallPass&&biggerBoat){
-                    victor++;
+                if (isSymbol.includes(activeSymbol)&&shallPass){
+                    leftDiagonal++;
                 }
                 else{
                     break
                 }
             }
+            return leftDiagonal;
+        }
+
+        try{
+        victor=leftDiagonalVictory(11)
+        }
+        catch{}
+
+        try{
+        victor=victor+leftDiagonalVictory(-11)
+        }
+        catch{}
+        return victor >=4;
+        }
+
+        const rightDiagonalSituation =function(){
+            var victor=0;
+            const rightDiagonalVictor=function(num){
+                rightDiagonal=0
+                for (var i = 1; i < 5; i++){
+                    var a = document.activeElement.id;
+                    rareNumber=document.getElementById(a);
+                    a=parseInt(a);
+                    getRareNumber=(rareNumber.className[8]);
+                    getRareNumber=parseInt(getRareNumber);
+                    var diagonal =(i*num);
+                    isSymbol = document.getElementById(a+diagonal).innerHTML;
+                    var aParent = document.getElementById(a).parentElement;
+                    var aColumn = aParent.parentElement;
+                    var symbolParent = document.getElementById(a+diagonal).parentElement;
+                    var symbolDiagonal = symbolParent.parentElement;
+                    var shallPass = aColumn !== symbolDiagonal;
+
+                    rareNumber=document.getElementById(a);
+                    getRareNumber=(rareNumber.className[8]);
+                    getRareNumber=parseInt(getRareNumber);
+                    rareNumber2=document.getElementById(a+diagonal);
+                    getRareNumber2=(rareNumber2.className[8]);
+                    getRareNumber2=parseInt(getRareNumber2);
+
+                    veryGood=getRareNumber-getRareNumber2;
+
+                    if (num==9){
+                        var biggerBoat = veryGood > 0;}
+                    else{
+                        var biggerBoat = veryGood < 0;
+                    }
+
+
+                    if (isSymbol.includes(activeSymbol)&&shallPass&&biggerBoat){
+                        rightDiagonal++;
+                    }
+                    else{
+                        break
+                    }
+                }
+                return rightDiagonal;
+            }
+            try{
+                victor=rightDiagonalVictor(9)
             }
             catch{}
 
             try{
-            for (var i = 1; i < 5; i++){
-                var a = document.activeElement.id;
-                a=parseInt(a);
-                diagonalMinus =(i*10)-i;
-
-                isSymbol = document.getElementById(a-diagonalMinus).innerHTML;
-                var aParent = document.getElementById(a).parentElement;
-                var aColumn = aParent.parentElement;
-                var symbolParent = document.getElementById(a-diagonalMinus).parentElement;
-                var symbolDiagonal = symbolParent.parentElement;
-                var shallPass = aColumn !== symbolDiagonal;
-
-                rareNumber=document.getElementById(a);
-                getRareNumber=(rareNumber.className[8]);
-                getRareNumber=parseInt(getRareNumber);
-                rareNumber2=document.getElementById(a-diagonalMinus);
-                getRareNumber2=(rareNumber2.className[8]);
-                getRareNumber2=parseInt(getRareNumber2);
-                veryGood=getRareNumber-getRareNumber2;
-                var biggerBoat = veryGood <0;
-
-                if (isSymbol.includes(activeSymbol)&&shallPass&& biggerBoat){
-                    victor++;
-                }
-                else{
-                    break
-                }
-            }
+                victor=victor+rightDiagonalVictor(-9)
             }
             catch{}
             return victor >=4
