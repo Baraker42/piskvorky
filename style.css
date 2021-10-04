@@ -6,6 +6,9 @@ body{
     background-attachment: fixed;
     height: 80vmax;
 }
+p{
+    font-family: sans-serif;
+}
 .container{
     margin: 0 auto;
     margin-top: 80px;
@@ -13,42 +16,34 @@ body{
     text-align: center;
     color: white;
 }
-
 .text{
     background-color:#283e50;
     margin: 0 auto;
     width: 80%;
 }
-
 .text-pravidla{
     border-radius:8px 8px 0 0;
 }
-p{
-    font-family: sans-serif;
-}
+
   /*zóna pro základní stylování*/
 .homepage-p {
     margin:0.7vw 2vw 0.7vw 2vw;
     padding-bottom: 0.8vw;
 }
-
 h1{
     margin: 0 auto;
     font-family: "Lobster";
     padding-top:0.8vw;
     font-weight: 100;
 }
-
 img{
     margin: 0 auto;
     display: block;
 }
-
 .tic-toc{
     border-radius: 8px 8px 0 0;
     width: 80%;
 }
-
 .buttons{
     display: flex;
     flex-direction: column;
@@ -56,7 +51,6 @@ img{
     align-items: center;
     justify-content: center;
 }
-
 .rules{
     background-color:#1fcca4;
     border-bottom: 0.1vw solid #283e50;
@@ -65,11 +59,9 @@ img{
     justify-content: center;
     align-items: center;
 }
-
 .rules:hover {
     background-color: #1cbb96;
 }
-
 .start_game{
     position: relative;
     background-color: #0197f6;
@@ -78,39 +70,34 @@ img{
     justify-content: center;
     align-items: center;
 }
-
 .start_game:hover{
     background-color:#0090e9;
 }
-
 a {
   text-decoration: none;
   color: #fff;
   font-family: sans-serif;
 }
+
 /*specifikace stránky pravidla*/
 .list-pravidla{
     text-align:left;
 }
-
 .list-pravidla li{
     margin-bottom:10px;
     margin-right: 10px;
     font-family: sans-serif;
     padding: 0;
 }
-
 .game-symbol{
     filter: invert();
     width:1em;
     height:1em;
     display: inline;
 }
-
 img .mmm{
     fill:red;
 }
-
 .instruction{
     font-style: italic;
     font-family: sans-serif;
@@ -119,13 +106,11 @@ img .mmm{
     justify-content: center;
     margin-bottom: 20px;
 }
-
 .instruction figure{
     max-width: 330px;
     padding:0;
     margin:15px;
 }
-
 .instruction img{
     margin-bottom:10px;
     width: 100%;
@@ -136,13 +121,11 @@ img .mmm{
     width: 40%;
     max-width: 80vmin;
 }
-
 .game-header h1{
     margin: 0 auto;
     font-size:6.5vh;
     margin-bottom:10px;
 }
-
 .game-menu-container{
     width: 90%;
     margin: 0 auto;
@@ -156,32 +139,25 @@ img .mmm{
     display: inline-flex;
     font-weight: bold;
 }
-
 .active-symbol{
     filter:invert();
     width: 1em;
-    
 }
-
 .right-menu{
     display:flex;
     float: right;
 }
-
 .menu-symbol img{
     width:2em;
 }
-
 .menu-symbol{
     padding:4px;
     margin:5px;
     border-radius:4px;
 }
-
 button{
     padding:0;
 }
-
 .home{
     background: #1fcca4;
     width: 3em;
@@ -190,24 +166,20 @@ button{
 .home:hover{
     background: #1cbb96;
 }
-
 .restart{
     background:#0197f6;
     width: 3em;
     height: 2.5em;
 }
-
 .restart:hover{
     background:#0090e9;
 }
-
 #container-sketch{
     width:100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
-
 .playground{
     display:block;
     border:1px solid black;
@@ -223,6 +195,7 @@ button:hover {
     opacity: 0.6;
 }
 
+/*animace zobrazení symbolu*/
 .input-symbol{
     animation: grow 0.15s;
 }
@@ -231,9 +204,6 @@ button:hover {
     from {width: 0em;}
     to {width: 1em;}
   }
-
-
-
 
 /*zóna pro responzivilitu obsahu napříč jednotlivými stránkami*/
 @media screen and (min-width: 601px) {
@@ -247,43 +217,45 @@ button:hover {
         font-size: 15px;
         height:50px;
       }
-      /* responzivilita pravidel*/
+
+/* responzivilita pravidel*/
     li {
         font-size:15px;
     }
+
     /*konec respozivility pravidel --- začátek respozivility hry*/
     figcaption {
         font-size: 15px;
     }
-
     .playground {
         width: 3vw;
         height: 3vw;
     }
-
    .left-menu p{
-    font-size: 30px;
-}
+        font-size: 30px;
+    }
   }
+
 /*vzhled pro menší zařízení*/
   @media screen and (max-width: 600px) {
-      /*pro celý web*/
-      .container{
+    /*pro celý web*/
+    .container{
         width:95%;
     }
     .game-container{
         max-width:80vmin;
     }
-      h1 {
+    h1 {
         font-size:22px;
-      }
+    }
     p {
-      font-size:12px;
+        font-size:12px;
     }
     a {
         font-size:12px;
         height:25px;
-      }
+    }
+
       /*pro stránku s pravidly*/
     li {
         font-size:12px;
@@ -305,7 +277,5 @@ button:hover {
     }
     .input-symbol{
         width: 1em;
-
     }
-
   }

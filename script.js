@@ -59,7 +59,7 @@ const symbolFunction = function(){
 };
 
 const currentSituation = function () {
-
+    //try a chatch v této funkci ošetřují vyhodnocování pro buňky mimo hrací pole
     //vyhodnocení sloupce
     const columnSituation =function(){
         var victor=0;
@@ -87,14 +87,13 @@ const currentSituation = function () {
             return column
         }
         try{
-        victor = columnVictor(1);
+            victor = columnVictor(1);
         }
         catch{}
         try{
-        victor = victor + (columnVictor(-1));
+            victor = victor + (columnVictor(-1));
         }
         catch{}
-
         return victor >=4;
         }
 
@@ -107,9 +106,7 @@ const currentSituation = function () {
                 var a = document.activeElement.id;
                 row=i*num;
                 a=parseInt(a);
-
                 isSymbol = document.getElementById(a+row).innerHTML;
-                console.log(isSymbol,activeSymbol);
                 if (isSymbol.includes(activeSymbol)){
                     rowPlus++;
                 }
@@ -160,9 +157,9 @@ const currentSituation = function () {
         for (var i = 1; i < 5; i++){
             var a = document.activeElement.id;
             a=parseInt(a);
-            diagonal =(i*11);
+            diagonal =(i*-11);
 
-            isSymbol = document.getElementById(a-diagonal).innerHTML;
+            isSymbol = document.getElementById(a+diagonal).innerHTML;
 
             var aParent = document.getElementById(a).parentElement;
             var aColumn = aParent.parentElement;
