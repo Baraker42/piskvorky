@@ -1,5 +1,5 @@
 //Skript pro tvorbu hrací mřížky
-var createBoxes = function () {
+const createBoxes = function () {
    var sketch = document.getElementById("container-sketch");
    var counter = 0;
 
@@ -20,7 +20,6 @@ var createBoxes = function () {
         }
     }
 };
-
 //volá tvorbu mřížky
 createBoxes()
 
@@ -32,7 +31,7 @@ symbol.setAttribute("class","active-symbol");
 symbol.setAttribute("src",activeSymbol);
 currentPlayer.appendChild(symbol);
 
-var symbolFunction = function(){
+const symbolFunction = function(){
     var activeButton =document.activeElement.id;
     var checkIfFree = document.activeElement.innerHTML;
 
@@ -43,7 +42,7 @@ var symbolFunction = function(){
         symbol.setAttribute("src",activeSymbol);
 
         //funkce pro zapsání symbolu do hracího pole
-        var symbolChanger = function(activeSymbol){
+        const symbolChanger = function(activeSymbol){
             symbol.setAttribute("class","input-symbol");
             inputSymbol.appendChild(symbol);
             currentSituation();
@@ -59,17 +58,17 @@ var symbolFunction = function(){
 }
 };
 
-var currentSituation = function () {
+const currentSituation = function () {
 
     //vyhodnocení sloupce
-    var columnSituation =function(){
+    const columnSituation =function(){
         var victor=0;
         var a = document.activeElement.id;
         a=parseInt(a);
         var aParent = document.getElementById(a).parentElement;
         var aColumn = aParent.parentElement;
 
-        var columnVictor= function(num){
+        const columnVictor= function(num){
             column=0;
             basicNum=num;
             for (var i = 1; i <5;i++){
@@ -100,46 +99,39 @@ var currentSituation = function () {
         }
 
     //vyhodnocení řádku
-    var rowSituation =function(){
-        var victor=0;
-        try{
-        for (var i = 1; i < 5; i++){
-            var a = document.activeElement.id;
-            rowPlus=i*10;
-            a=parseInt(a);
+        const rowSituation=function(){
+            var victor=0;
+            const rowVictor=function(num){
+            rowPlus=0
+            for (var i = 1; i < 5; i++){
+                var a = document.activeElement.id;
+                row=i*num;
+                a=parseInt(a);
 
-
-            isSymbol = document.getElementById(a+rowPlus).innerHTML;
-            if (isSymbol.includes(activeSymbol)){
-                victor++;
+                isSymbol = document.getElementById(a+row).innerHTML;
+                console.log(isSymbol,activeSymbol);
+                if (isSymbol.includes(activeSymbol)){
+                    rowPlus++;
+                }
+                else{
+                    break;
             }
-            else{
-                break;
             }
-        }
-    }
-    catch{}
-        try{
-        for (var i = 1; i < 5; i++){
-            var a = document.activeElement.id;
-            rowMinus = i*-10;
-            a=parseInt(a);
-
-            isSymbol = document.getElementById(a+rowMinus).innerHTML;
-            if (isSymbol.includes(activeSymbol)){
-                victor++;
+            return rowPlus;
             }
-            else{
-                break
+            try{
+                victor=rowVictor(10)
             }
-        }
-    }
-    catch{}
+            catch{}
+            try{
+                victor=victor+rowVictor(-10)
+            }
+            catch{}
             return victor >=4;
-    }
+        }
         //vyhodnocení šikmé z leva
 
-    var leftDiagonalSituation =function(){
+    const leftDiagonalSituation =function(){
         var victor=0;
 
         try{
@@ -190,7 +182,7 @@ var currentSituation = function () {
         return victor >=4;
         }
 
-        var rightDiagonalSituation =function(){
+        const rightDiagonalSituation =function(){
             var victor=0;
             try{
 
@@ -276,7 +268,7 @@ var currentSituation = function () {
                 winnerSymbol=first[1]
             }
 
-            var confirmYesNo = function(){
+            const confirmYesNo = function(){
                 var confirmYes = confirm("Vyhrává "+winnerSymbol+", chcete hrát znovu?")
                 if (confirmYes===true){
                     location.reload();
