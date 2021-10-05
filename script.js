@@ -1,21 +1,21 @@
 //Skript pro tvorbu hrací mřížky
 const createBoxes = function () {
-   var sketch = document.getElementById("container-sketch");
+   var makeGrid = document.getElementById("container-sketch");
    var counter = 0;
 
     for (var i = 0; i < 10; i++) {
         var column = document.createElement("div");
         column.setAttribute("class",("playground-column"+i));
-        sketch.appendChild(column);
+        makeGrid.appendChild(column);
         for (var j = 0; j < 10; j++) {
-            var cell=document.createElement("div");
-            cell.setAttribute("class","playground");
+            var newCell=document.createElement("div");
+            newCell.setAttribute("class","playground");
             var playButton = document.createElement("button");
             playButton.setAttribute("class","sandbox");
             playButton.classList.add(j);
             playButton.setAttribute("id",counter);
-            column.appendChild(cell);
-            cell.appendChild(playButton);
+            column.appendChild(newCell);
+            newCell.appendChild(playButton);
             counter ++;
         }}};
 //volá tvorbu mřížky
@@ -32,7 +32,7 @@ currentPlayer.appendChild(symbol);
 const symbolFunction = function(){
     var activeButton = document.activeElement;
     var checkIfFree = document.activeElement.innerHTML;
-    console.log(activeButton)
+
     if (checkIfFree == ""){
         symbol = document.createElement("img");
         symbol.setAttribute("class","active-symbol");
@@ -59,26 +59,26 @@ const currentSituation = function () {
     //vyhodnocení sloupce
     const columnSituation = function(){
         var victor = 0;
-        var a = parseInt(document.activeElement.id);
-        var aParent = document.getElementById(a).parentElement;
+        var activeCell = parseInt(document.activeElement.id);
+        var aParent = document.getElementById(activeCell).parentElement;
         var aColumn = aParent.parentElement;
 
         const columnVictor = function(num){
-            column = 0;
+            columnStatus = 0;
             basicNum = num;
             for (var i = 1; i <5;i++){
-                isSymbol = document.getElementById(a+num).innerHTML;
-                var symbolParent = document.getElementById(a+num).parentElement;
+                isSymbol = document.getElementById(activeCell+num).innerHTML;
+                var symbolParent = document.getElementById(activeCell+num).parentElement;
                 var symbolColumn = symbolParent.parentElement;
                 var shallPass = aColumn == symbolColumn;
                 num = num + basicNum;
             if (isSymbol.includes(activeSymbol)&&shallPass){
-                column++;
+                columnStatus ++;
             }
             else{
                 break;
             }}
-            return column;
+            return columnStatus;
         }
         try{
             victor = columnVictor(1);
@@ -95,18 +95,18 @@ const currentSituation = function () {
         const rowSituation=function(){
             var victor = 0;
             const rowVictor=function(num){
-                rowPlus = 0;
+                rowStatus = 0;
                 for (var i = 1; i < 5; i++){
-                    var a = parseInt(document.activeElement.id);
+                    var activeCell = parseInt(document.activeElement.id);
                     row = i*num;
-                    isSymbol = document.getElementById(a+row).innerHTML;
+                    isSymbol = document.getElementById(activeCell+row).innerHTML;
                     if (isSymbol.includes(activeSymbol)){
-                        rowPlus++;
+                        rowStatus++;
                     }
                     else{
                         break;
                     }}
-                return rowPlus;
+                return rowStatus;
             }
             try{
                 victor = rowVictor(10)
@@ -123,24 +123,24 @@ const currentSituation = function () {
     const leftDiagonalSituation = function(){
         var victor = 0;
         const leftDiagonalVictory = function(num){
-            leftDiagonal = 0
+            leftDiagonalStatus = 0
             for (var i = 1; i < 5; i++){
-                var a = parseInt(document.activeElement.id);
+                var activeCell = parseInt(document.activeElement.id);
                 var diagonal =(i*num)
-                isSymbol = document.getElementById(a+diagonal).innerHTML;
-                var aParent = document.getElementById(a).parentElement;
+                isSymbol = document.getElementById(activeCell+diagonal).innerHTML;
+                var aParent = document.getElementById(activeCell).parentElement;
                 var aColumn = aParent.parentElement;
-                var symbolParent = document.getElementById(a+diagonal).parentElement;
+                var symbolParent = document.getElementById(activeCell+diagonal).parentElement;
                 var symbolDiagonal = symbolParent.parentElement;
                 var shallPass = aColumn !== symbolDiagonal;
 
                 if (isSymbol.includes(activeSymbol)&&shallPass){
-                    leftDiagonal++;
+                    leftDiagonalStatus++;
                 }
                 else{
                     break;
                 }}
-            return leftDiagonal;
+            return leftDiagonalStatus;
         }
         try{
         victor = leftDiagonalVictory(11)
@@ -157,44 +157,44 @@ const currentSituation = function () {
         const rightDiagonalSituation = function(){
             var victor=0;
             const rightDiagonalVictor= function(num){
-                rightDiagonal = 0;
+                rightDiagonalStatus = 0;
                 for (var i = 1; i < 5; i++){
-                    var a = parseInt(document.activeElement.id);
+                    var activeCell = parseInt(document.activeElement.id);
                     var diagonal =(i*num);
-                    isSymbol = document.getElementById(a+diagonal).innerHTML;
-                    var aParent = document.getElementById(a).parentElement;
+                    isSymbol = document.getElementById(activeCell+diagonal).innerHTML;
+                    var aParent = document.getElementById(activeCell).parentElement;
                     var aColumn = aParent.parentElement;
-                    var symbolParent = document.getElementById(a+diagonal).parentElement;
+                    var symbolParent = document.getElementById(activeCell+diagonal).parentElement;
                     var symbolDiagonal = symbolParent.parentElement;
                     var shallPass = aColumn !== symbolDiagonal;
 
-                    rareNumber = document.getElementById(a);
-                    getRareNumber = rareNumber.className;
-                    getRareNumber = getRareNumber.split(" ");
-                    getRareNumber = parseInt(getRareNumber[1]);
+                    activeColumn = document.getElementById(activeCell);
+                    activeColumnId = activeColumn.className;
+                    activeColumnId = activeColumnId.split(" ");
+                    activeColumnId = parseInt(activeColumnId[1]);
 
-                    rareNumber2 = document.getElementById(a+diagonal);
-                    getClassName = (rareNumber2.className);
-                    getRareNumber2 = getClassName.split(" ");
-                    getRareNumber2 = parseInt(getRareNumber2[1]);
+                    nextColumn = document.getElementById(activeCell+diagonal);
+                    nextColumnId = nextColumn.className;
+                    nextColumnId = nextColumnId.split(" ");
+                    nextColumnId = parseInt(nextColumnId[1]);
 
-                    veryGood = getRareNumber-getRareNumber2;
+                    correctColumn = activeColumnId-nextColumnId;
 
                     if (num == 9){
-                        var biggerBoat = veryGood > 0;
+                        var isCorrect = correctColumn > 0;
                     }
                     else{
-                        var biggerBoat = veryGood < 0;
+                        var isCorrect = correctColumn < 0;
                     }
 
-                    if (isSymbol.includes(activeSymbol)&&shallPass&&biggerBoat){
-                        rightDiagonal++;
+                    if (isSymbol.includes(activeSymbol)&&shallPass&&isCorrect){
+                        rightDiagonalStatus++;
                     }
                     else{
                         break;
                     }
                 }
-                return rightDiagonal;
+                return rightDiagonalStatus;
             }
             try{
                 victor = rightDiagonalVictor(9);
