@@ -187,8 +187,9 @@ const currentSituation = function () {
                     getRareNumber=(rareNumber.className[8]);
                     getRareNumber=parseInt(getRareNumber);
                     rareNumber2=document.getElementById(a+diagonal);
-                    getRareNumber2=(rareNumber2.className[8]);
-                    getRareNumber2=parseInt(getRareNumber2);
+                    getClassName=(rareNumber2.className);
+                    getRareNumber2=getClassName.split(" ");
+                    getRareNumber2=parseInt(getRareNumber2[1]);
 
                     veryGood=getRareNumber-getRareNumber2;
 
