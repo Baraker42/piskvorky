@@ -267,9 +267,9 @@ else{
     lenCookie = cookie.length;
     var eqPos = cookie.indexOf("=");
     var name = eqPos > -1 ? cookie.substr(eqPos+1,lenCookie) : cookie;
-    console.log(name);
+
     newCookies.push(name);
-    console.log(eqPos,lenCookie);
+
     }
     firstOrder=(Math.floor(Math.random() * newCookies.length));
     const randomElement = newCookies[firstOrder];
