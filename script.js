@@ -235,7 +235,7 @@ var elements = document.getElementsByClassName("sandbox");
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', symbolFunction, false);
 }
-document.cookie = "username=John Doe";
+
 const getName = function(){
     const player =[];
     const newOrder =[];
@@ -249,7 +249,7 @@ const getName = function(){
     newOrder[0] = player[firstOrder];
     player.splice(firstOrder,1);
     newOrder[1] = player[0];
-    
+
     return newOrder;
 }
 setTimeout(() => {first=getName()}, 50);
