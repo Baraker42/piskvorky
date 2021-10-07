@@ -258,6 +258,7 @@ setTimeout(() => {first=getName()}, 50);
 }
 else{
     const cookieName = function(){
+    const newOrder =[];
     var cookies = getCookies.split(";");
     newCookies = [];
     lenCookies = cookies.length;
