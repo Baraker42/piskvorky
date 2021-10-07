@@ -264,6 +264,7 @@ else{
     var cookie = cookies[i];
     var eqPos = cookie.indexOf("=");
     var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    console.log(name);
     newCookies.push(name);
     }
     firstOrder=(Math.floor(Math.random() * newCookies.length));
