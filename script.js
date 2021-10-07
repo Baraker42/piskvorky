@@ -260,12 +260,14 @@ else{
     const cookieName = function(){
     var cookies = getCookies.split(";");
     newCookies = [];
+    lenCookies = cookies.length;
     for (var i=0; i<cookies.length; i++){
     var cookie = cookies[i];
     var eqPos = cookie.indexOf("=");
-    var name = eqPos > -1 ? cookie.substr(eqPos, cookies.length) : cookie;
+    var name = eqPos > -1 ? cookie.substr(eqPos, lenCookies) : cookie;
     console.log(name);
     newCookies.push(name);
+    console.log(eqPos, lenCookies)
     }
     firstOrder=(Math.floor(Math.random() * newCookies.length));
     const randomElement = newCookies[firstOrder];
