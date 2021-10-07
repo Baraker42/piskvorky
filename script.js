@@ -274,9 +274,9 @@ else{
     firstOrder=(Math.floor(Math.random() * newCookies.length));
     const randomElement = newCookies[firstOrder];
     alert("Začíná "+ randomElement);
-    newOrder[0] = player[firstOrder];
-    player.splice(firstOrder,1);
-    newOrder[1] = player[0];
+    newOrder[0] = newCookies[firstOrder];
+    newCookies.splice(firstOrder,1);
+    newOrder[1] = newCookies[0];
 
     return newOrder;
 
