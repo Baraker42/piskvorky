@@ -215,14 +215,14 @@ const currentSituation = function () {
 
         if (columnResult||rowResult||rightDiagonalResult||leftDiagonalResult){
             if (activeSymbol.includes("circle.svg")){
-                winnerSymbol=first[0];
+                winner=first[0];
             }
             else{
-                winnerSymbol=first[1];
+                winner=first[1];
             }
 
             const confirmYesNo = function(){
-                var confirmYes = confirm("Vyhrává "+winnerSymbol+", chcete hrát znovu?")
+                var confirmYes = confirm("Vyhrává "+winner+", chcete hrát znovu?")
                 if (confirmYes === true){
                     location.reload();
                 }
@@ -235,18 +235,21 @@ var elements = document.getElementsByClassName("sandbox");
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', symbolFunction, false);
 }
-
+document.cookie = "username=John Doe";
 const getName = function(){
     const player =[];
     const newOrder =[];
     player.push(prompt("Vložte jméno prvního hráče","První"));
     player.push(prompt("Vložte jméno druhého hráče","Druhý"));
+    document.cookie ="first="+player[0]
+    document.cookie ="second="+player[1]
     firstOrder=(Math.floor(Math.random() * player.length));
     const randomElement = player[firstOrder];
     alert("Začíná "+ randomElement);
     newOrder[0] = player[firstOrder];
     player.splice(firstOrder,1);
     newOrder[1] = player[0];
+    
     return newOrder;
 }
 setTimeout(() => {first=getName()}, 50);
