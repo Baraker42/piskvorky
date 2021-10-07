@@ -263,11 +263,12 @@ else{
     lenCookies = cookies.length;
     for (var i=0; i<cookies.length; i++){
     var cookie = cookies[i];
+    lenCookie = cookie.length;
     var eqPos = cookie.indexOf("=");
-    var name = eqPos > -1 ? cookie.substr(lenCookies, eqPos) : cookie;
+    var name = eqPos > -1 ? cookie.substr(eqPos,lenCookie) : cookie;
     console.log(name);
     newCookies.push(name);
-    console.log(lenCookies, eqPos);
+    console.log(eqPos,lenCookie);
     }
     firstOrder=(Math.floor(Math.random() * newCookies.length));
     const randomElement = newCookies[firstOrder];
