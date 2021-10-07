@@ -241,8 +241,12 @@ const getName = function(){
     const newOrder =[];
     player.push(prompt("Vložte jméno prvního hráče","První"));
     player.push(prompt("Vložte jméno druhého hráče","Druhý"));
-    document.cookie ="first="+player[0]
-    document.cookie ="second="+player[1]
+    currentDate= new Date();
+    currentMinute = currentDate.getMinutes();
+    newMinute = currentMinute + 5;
+    currentDate.setMinutes(newMinute);
+    document.cookie ="first="+player[0]+";expires="+currentDate;
+    document.cookie ="second="+player[1];
     firstOrder=(Math.floor(Math.random() * player.length));
     const randomElement = player[firstOrder];
     alert("Začíná "+ randomElement);
