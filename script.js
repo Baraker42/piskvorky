@@ -252,15 +252,22 @@ const getName = function(){
     newOrder[1] = player[0];
 
     return newOrder;
-    
+
 }
 setTimeout(() => {first=getName()}, 50);
 }
 else{
     const cookieName = function(){
     var cookies = getCookies.split(";");
-    firstOrder=(Math.floor(Math.random() * cookies.length));
-    const randomElement = cookies[firstOrder];
+    newCookies = [];
+    for (var i=0; i<cookies.length; i++){
+    var cookie = cookies[i];
+    var eqPos = cookie.indexOf("=");
+    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    newCookies.push(name);
+    }
+    firstOrder=(Math.floor(Math.random() * newCookies.length));
+    const randomElement = newCookies[firstOrder];
     alert("Začíná "+ randomElement);
     newOrder[0] = player[firstOrder];
     player.splice(firstOrder,1);
