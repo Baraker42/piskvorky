@@ -242,12 +242,8 @@ const getName = function(){
     const newOrder =[];
     player.push(prompt("Vložte jméno prvního hráče","První"));
     player.push(prompt("Vložte jméno druhého hráče","Druhý"));
-    currentDate= new Date();
-    currentMinute = currentDate.getMinutes();
-    newMinute = currentMinute + 5;
-    currentDate.setMinutes(newMinute);
-    document.cookie ="first="+player[0]+";max-age="+180;
-    document.cookie ="second="+player[1]+";max-age="+180;;
+    document.cookie ="first="+player[0]+";max-age="+600;
+    document.cookie ="second="+player[1]+";max-age="+600;;
     firstOrder=(Math.floor(Math.random() * player.length));
     const randomElement = player[firstOrder];
     alert("Začíná "+ randomElement);
@@ -256,6 +252,22 @@ const getName = function(){
     newOrder[1] = player[0];
 
     return newOrder;
+    
 }
 setTimeout(() => {first=getName()}, 50);
+}
+else{
+    const cookieName = function(){
+    var cookies = getCookies.split(";");
+    firstOrder=(Math.floor(Math.random() * cookies.length));
+    const randomElement = cookies[firstOrder];
+    alert("Začíná "+ randomElement);
+    newOrder[0] = player[firstOrder];
+    player.splice(firstOrder,1);
+    newOrder[1] = player[0];
+
+    return newOrder;
+
+}
+setTimeout(() => {first=cookieName()}, 50);
 }
