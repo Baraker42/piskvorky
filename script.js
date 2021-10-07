@@ -246,8 +246,8 @@ const getName = function(){
     currentMinute = currentDate.getMinutes();
     newMinute = currentMinute + 5;
     currentDate.setMinutes(newMinute);
-    document.cookie ="first="+player[0]+";expires="+currentDate;
-    document.cookie ="second="+player[1];
+    document.cookie ="first="+player[0]+";max-age="+180;
+    document.cookie ="second="+player[1]+";max-age="+180;;
     firstOrder=(Math.floor(Math.random() * player.length));
     const randomElement = player[firstOrder];
     alert("Začíná "+ randomElement);
