@@ -235,7 +235,8 @@ var elements = document.getElementsByClassName("sandbox");
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', symbolFunction, false);
 }
-
+getCookies = document.cookie
+if (!getCookies.includes("first") ){
 const getName = function(){
     const player =[];
     const newOrder =[];
@@ -257,3 +258,4 @@ const getName = function(){
     return newOrder;
 }
 setTimeout(() => {first=getName()}, 50);
+}
