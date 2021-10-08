@@ -230,11 +230,12 @@ const currentSituation = function () {
             setTimeout(confirmYesNo, 200);
         }
 }
-
+//přiřadí funkci všem hracím políčkům
 var elements = document.getElementsByClassName("sandbox");
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', symbolFunction, false);
 }
+
 //práce s cookies
 getCookies = document.cookie //přečte cookies dokumentu
 
@@ -259,18 +260,8 @@ const getName = function(){
     player.push(prompt("Vložte jméno druhého hráče","Druhý"));
     document.cookie ="first="+player[0]+";max-age="+600;
     document.cookie ="second="+player[1]+";max-age="+600;
-    /*
-    const newOrder =[];
-    firstOrder=(Math.floor(Math.random() * player.length));
-    const randomElement = player[firstOrder];
-    alert("Začíná "+ randomElement);
-    newOrder[0] = player[firstOrder];
-    player.splice(firstOrder,1);
-    newOrder[1] = player[0];
 
-    return newOrder;*/
-    return nameDraw(player)
-
+    return nameDraw(player);
 }
 setTimeout(() => {playerArr=getName()}, 50);
 }
@@ -279,9 +270,8 @@ else{
     const cookieName = function(){
     var cookies = getCookies.split(";");
     lenCookies = cookies.length;
-
-    const newOrder =[];
     newCookies = [];
+
     for (var i=0; i<cookies.length; i++){
         var cookie = cookies[i];
         lenCookie = cookie.length;
@@ -289,17 +279,8 @@ else{
         var name = eqPos > -1 ? cookie.substr(eqPos+1,lenCookie) : cookie;
         newCookies.push(name);
     }
-    /*
-    firstOrder=(Math.floor(Math.random() * newCookies.length));
-    const randomElement = newCookies[firstOrder];
-    alert("Začíná "+ randomElement);
-    newOrder[0] = newCookies[firstOrder];
-    newCookies.splice(firstOrder,1);
-    newOrder[1] = newCookies[0];
 
-    return newOrder;*/
-    return nameDraw(newCookies)
-
+    return nameDraw(newCookies);
 }
 setTimeout(() => {playerArr=cookieName()}, 50);
 }
