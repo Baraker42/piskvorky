@@ -247,7 +247,7 @@ const nameDraw = function(package){
     alert("Začíná "+ randomElement);
     newOrder[0] = package[firstOrder];
     package.splice(firstOrder,1);
-    newOrder[1] = player[0];
+    newOrder[1] = package[0];
 
     return newOrder;
 }
