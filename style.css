@@ -210,17 +210,17 @@ button:hover {
     h1 {
         font-size: 35px;
       }
-    p {
+    .homepage-p {
       font-size: 15px;
     }
     a {
         font-size: 15px;
-        height:50px;
+        height: 50px;
       }
 
 /* responzivilita pravidel*/
     li {
-        font-size:15px;
+        font-size: 15px;
     }
 
     /*konec respozivility pravidel --- začátek respozivility hry*/
@@ -237,6 +237,14 @@ button:hover {
   }
 
 /*vzhled pro menší zařízení*/
+@media screen and (max-width: 790px) {
+    .left-menu p{
+        font-size: 20px;
+    }
+    a{
+        font-size: 12px;
+    }
+}
   @media screen and (max-width: 600px) {
     /*pro celý web*/
     .container{
@@ -248,7 +256,7 @@ button:hover {
     h1 {
         font-size:22px;
     }
-    p {
+    .homepage-p {
         font-size:12px;
     }
     a {
@@ -272,9 +280,7 @@ button:hover {
         width: 6.5vw;
         height: 6.5vw;
     }
-    .left-menu p{
-        font-size: 5.8vw;
-    }
+ 
     .input-symbol{
         width: 1em;
     }

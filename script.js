@@ -215,10 +215,10 @@ const currentSituation = function () {
 
         if (columnResult||rowResult||rightDiagonalResult||leftDiagonalResult){
             if (activeSymbol.includes("circle.svg")){
-                winner=first[0];
+                winner = playerArr[0];
             }
             else{
-                winner=first[1];
+                winner = playerArr[1];
             }
 
             const confirmYesNo = function(){
@@ -254,7 +254,7 @@ const getName = function(){
     return newOrder;
 
 }
-setTimeout(() => {first=getName()}, 50);
+setTimeout(() => {playerArr=getName()}, 50);
 }
 else{
     const cookieName = function(){
@@ -262,15 +262,15 @@ else{
     var cookies = getCookies.split(";");
     newCookies = [];
     lenCookies = cookies.length;
+
     for (var i=0; i<cookies.length; i++){
     var cookie = cookies[i];
     lenCookie = cookie.length;
     var eqPos = cookie.indexOf("=");
     var name = eqPos > -1 ? cookie.substr(eqPos+1,lenCookie) : cookie;
-
     newCookies.push(name);
-
     }
+
     firstOrder=(Math.floor(Math.random() * newCookies.length));
     const randomElement = newCookies[firstOrder];
     alert("Začíná "+ randomElement);
@@ -281,5 +281,5 @@ else{
     return newOrder;
 
 }
-setTimeout(() => {first=cookieName()}, 50);
+setTimeout(() => {playerArr=cookieName()}, 50);
 }
