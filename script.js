@@ -48,7 +48,7 @@ const symbolFunction = function(){
                 else{
                     activeSymbol = "cross.svg";
                 }
-                currentPlayer.innerHTML ="<img class='active-symbol' src="+activeSymbol+">";
+                currentPlayer.innerHTML = "<img class='active-symbol' src=" + activeSymbol + ">";
             return activeSymbol;
         }
         activeSymbol = symbolChanger(activeSymbol);
@@ -155,7 +155,7 @@ const currentSituation = function () {
         }
 
         const rightDiagonalSituation = function(){
-            var victor=0;
+            var victor = 0;
             const rightDiagonalVictor= function(num){
                 rightDiagonalStatus = 0;
                 for (var i = 1; i < 5; i++){
@@ -188,7 +188,7 @@ const currentSituation = function () {
                     }
 
                     if (isSymbol.includes(activeSymbol)&&shallPass&&isCorrect){
-                        rightDiagonalStatus++;
+                        rightDiagonalStatus ++;
                     }
                     else{
                         break;
@@ -202,7 +202,7 @@ const currentSituation = function () {
             catch{}
 
             try{
-                victor = victor+rightDiagonalVictor(-9);
+                victor = victor + rightDiagonalVictor(-9);
             }
             catch{}
             return victor >= 4;
@@ -222,7 +222,7 @@ const currentSituation = function () {
             }
 
             const confirmYesNo = function(){
-                var confirmYes = confirm("Vyhrává "+winner+", chcete hrát znovu?")
+                var confirmYes = confirm("Vyhrává " + winner + ", chcete hrát znovu?")
                 if (confirmYes === true){
                     location.reload();
                 }
@@ -235,15 +235,32 @@ var elements = document.getElementsByClassName("sandbox");
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', symbolFunction, false);
 }
-getCookies = document.cookie
+//práce s cookies
+getCookies = document.cookie //přečte cookies dokumentu
+
+//verze pro neexistující cookies, získá od hráčů jména na uloží je na dobu 10 minut
+
+const nameDraw = function(package){
+    const newOrder =[];
+    firstOrder=(Math.floor(Math.random() * package.length));
+    const randomElement = package[firstOrder];
+    alert("Začíná "+ randomElement);
+    newOrder[0] = package[firstOrder];
+    package.splice(firstOrder,1);
+    newOrder[1] = player[0];
+
+    return newOrder;
+}
+
 if (!getCookies.includes("first") ){
 const getName = function(){
     const player =[];
-    const newOrder =[];
     player.push(prompt("Vložte jméno prvního hráče","První"));
     player.push(prompt("Vložte jméno druhého hráče","Druhý"));
     document.cookie ="first="+player[0]+";max-age="+600;
-    document.cookie ="second="+player[1]+";max-age="+600;;
+    document.cookie ="second="+player[1]+";max-age="+600;
+    /*
+    const newOrder =[];
     firstOrder=(Math.floor(Math.random() * player.length));
     const randomElement = player[firstOrder];
     alert("Začíná "+ randomElement);
@@ -251,26 +268,28 @@ const getName = function(){
     player.splice(firstOrder,1);
     newOrder[1] = player[0];
 
-    return newOrder;
+    return newOrder;*/
+    return nameDraw(player)
 
 }
 setTimeout(() => {playerArr=getName()}, 50);
 }
+//verze pro existující cookies. Získá z nich jména hráčů a použije je v dalším kole
 else{
     const cookieName = function(){
-    const newOrder =[];
     var cookies = getCookies.split(";");
-    newCookies = [];
     lenCookies = cookies.length;
 
+    const newOrder =[];
+    newCookies = [];
     for (var i=0; i<cookies.length; i++){
-    var cookie = cookies[i];
-    lenCookie = cookie.length;
-    var eqPos = cookie.indexOf("=");
-    var name = eqPos > -1 ? cookie.substr(eqPos+1,lenCookie) : cookie;
-    newCookies.push(name);
+        var cookie = cookies[i];
+        lenCookie = cookie.length;
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(eqPos+1,lenCookie) : cookie;
+        newCookies.push(name);
     }
-
+    /*
     firstOrder=(Math.floor(Math.random() * newCookies.length));
     const randomElement = newCookies[firstOrder];
     alert("Začíná "+ randomElement);
@@ -278,7 +297,8 @@ else{
     newCookies.splice(firstOrder,1);
     newOrder[1] = newCookies[0];
 
-    return newOrder;
+    return newOrder;*/
+    return nameDraw(newCookies)
 
 }
 setTimeout(() => {playerArr=cookieName()}, 50);
